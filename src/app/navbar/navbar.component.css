@@ -1,0 +1,26 @@
+nav {
+    display: flex;
+    background-color: #48cae4;
+    justify-content: flex-end;
+    padding-right: 25px;
+    gap: 10px;
+}
+
+a {
+    display: inline-block;
+    padding: 20px;
+    background-color: #caf0f8;
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: #b49594;
+    color: white;
+}
+
+a.active {
+    pointer-events: none;
+    background-color: #0096c7;
+    color: white;
+}

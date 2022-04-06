@@ -1,0 +1,37 @@
+#showcase {
+    background: url('src/assets/jess-bailey-q10VITrVYUM-unsplash.jpg') center center/cover no-repeat;
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#showcase #showcase-content {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 100px;
+    width: 400px;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+#showcase #showcase-content h1 {
+    margin-bottom: 20px;
+}
+
+#showcase #showcase-content a {
+    display: block;
+    background-color: #0096c7;
+    width: 200px;
+    padding: 25px;
+    margin: 50px auto;
+    text-decoration: none;
+    color: white;
+}
+
+
+#showcase #showcase-content a:hover {
+    background-color: #caf0f8;
+    color: gray;
+}
