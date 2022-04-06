@@ -1,29 +1,28 @@
-
-# Stage 1: Compile and Build angular codebase
-
-# Use official node image as the base image
-FROM node:latest as build
-
-# Set the working directory
-WORKDIR /usr/local/app
-
-# Add the source code to app
-COPY ./ /usr/local/app/
-
-# Install all the dependencies
+### STAGE 1:BUILD ###
+# Defining a node image to be used as giving it an alias of "build"
+# Which version of Node image to use depends on project dependencies 
+# This is needed to build and compile our code 
+# while generating the docker image
+FROM node:12.14-alpine AS build
+# Create a Virtual directory inside the docker image
+WORKDIR /dist/src/app
+# Copy files to virtual directory
+# COPY package.json package-lock.json ./
+# Run command in Virtual directory
+RUN npm cache clean --force
+# Copy files from local machine to virtual directory in docker image
+COPY . .
 RUN npm install
-
-# Generate the build of the application
-RUN npm run build
+RUN npm run build --prod
 
 
-# Stage 2: Serve app with nginx server
-
-# Use official nginx image as the base image
-FROM nginx:latest
-
-# Copy the build output to replace the default nginx contents.
-COPY --from=build /usr/local/app/dist/sample-angular-app /usr/share/nginx/html
-
-# Expose port 80
+### STAGE 2:RUN ###
+# Defining nginx image to be used
+FROM nginx:latest AS ngi
+# Copying compiled code and nginx config to different folder
+# NOTE: This path may change according to your project's output folder 
+COPY --from=build /dist/src/app/dist/my-docker-angular-app /usr/share/nginx/html
+COPY /nginx.conf  /etc/nginx/conf.d/default.conf
+# Exposing a port, here it means that inside the container 
+# the app will be using Port 80 while running
 EXPOSE 80
