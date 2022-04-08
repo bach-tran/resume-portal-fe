@@ -15,7 +15,6 @@ COPY . .
 RUN npm install
 RUN npm run build --prod
 
-
 ### STAGE 2:RUN ###
 # Defining nginx image to be used
 FROM nginx:latest AS ngi
