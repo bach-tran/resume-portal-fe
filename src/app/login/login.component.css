@@ -1,6 +1,6 @@
 #form {
     margin: 10vh auto;
-    width: 400px;
+    max-width: 400px;
     padding: 100px;
     background-color: #0096c7;
     text-align: center;
