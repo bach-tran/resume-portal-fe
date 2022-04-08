@@ -10,7 +10,8 @@
 #showcase #showcase-content {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 100px;
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     color: white;
     font-size: 20px;
     text-align: center;
@@ -23,7 +24,7 @@
 #showcase #showcase-content a {
     display: block;
     background-color: #0096c7;
-    width: 200px;
+    max-width: 200px;
     padding: 25px;
     margin: 50px auto;
     text-decoration: none;
