@@ -1,6 +1,8 @@
 <nav>
     <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
         true}">Home</a>
-    <a routerLink="login" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+    <a *ngIf="displayLoginRegister" routerLink="login" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
         true}">Register / Login</a>
+    <a *ngIf="!displayLoginRegister" (click)="logout()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+        true}">Logout</a>
 </nav>

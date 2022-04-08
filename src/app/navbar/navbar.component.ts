@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  displayLoginRegister: boolean = !localStorage.getItem('jwt');
+
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.authService.authSuccess.subscribe(() => {
+      this.displayLoginRegister = false;
+    });
+
+    this.authService.authLogout.subscribe(() => {
+      this.displayLoginRegister = true;
+    });
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
 }
